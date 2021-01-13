@@ -1,18 +1,27 @@
-a, b = map(int, input().split())
-list = [[0 for _ in range(b)] for _ in range(a)]
+result = [[0 for _ in range(10)] for _ in range(10)]
 
-n = int(input())
-for _ in range(n):
-    l, d, x, y = map(int, input().split())
-    x -= 1
-    y -= 1
-    for i in range(l):
-        if d == 0:
-            list[x][y+i] = 1
-        else:
-            list[x+i][y] = 1
+for i in range(10):
+    temp = list(map(int, input().split()))
+    for j in range(10):
+        result[i][j] = temp[j] 
 
-for i in range(a):
-    for j in range(b):
-        print(list[i][j],end=" ")
+m = 1
+n = 1
+
+while True:
+    if result[m][n] == 2 or (result[m][n+1] == 1 and result[m+1][n] == 1):
+        result[m][n] = 9
+        break
+    
+    result[m][n] = 9
+    if result[m][n+1] != 1:
+        n += 1
+        continue
+    if result[m+1][n] != 1:
+        m += 1
+        continue
+
+for i in range(10):
+    for j in range(10):
+        print(result[i][j], end=" ")
     print()
