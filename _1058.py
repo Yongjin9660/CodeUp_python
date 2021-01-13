@@ -1,3 +1,3 @@
-a, b = map(int, input().split())
-
-print("%d" % (not(a ^ b)))
+a, b = map(int,input().split())
+result = not(a or b)
+print("%d" % result)
